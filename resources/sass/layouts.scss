@@ -1,0 +1,129 @@
+/* LAYOUT */
+
+/* Layout */
+.d-flex {
+    display: flex;
+}
+
+.d-flex.wrap {
+    flex-wrap: wrap;
+}
+
+.grow {
+    flex-grow: 1;
+}
+
+.no-shrink {
+    flex-shrink: 1;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.flex-align-center {
+    display: flex;
+    align-items: center;
+}
+
+.flex-justify-center {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-between-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-end {
+    display: flex;
+    justify-content: end;
+}
+
+.flex-column-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row.row-cols-1>* {
+    flex: 1 0 100%;
+}
+
+.row.row-cols-2>* {
+    flex: 1 0 50%;
+}
+
+.row.row-cols-3>* {
+    flex: 1 0 calc(100% / 3);
+}
+
+.row.row-cols-4>* {
+    flex: 1 0 25%;
+}
+
+.row.row-cols-5>* {
+    flex: 1 0 20%;
+}
+
+.row.row-cols-6>* {
+    flex: 1 0 calc(100% / 6);
+}
+
+.row.g-1 {
+    margin: 0 -10px;
+}
+
+.row.g-1 .col {
+    padding: 0 10px;
+}
+
+.row.g-2 {
+    margin: 0 -15px;
+}
+
+.row.g-2 .col {
+    padding: 0 15px;
+}
+
+.row.g-3 {
+    margin: 0 -20px;
+}
+
+.row.g-3 .col {
+    padding: 0 20px;
+}
+
+.row.g-4 {
+    margin: 0 -25px;
+}
+
+.row.g-4 .col {
+    padding: 0 25px;
+}
+
+.row.g-5 {
+    margin: 0 -30px;
+}
+
+.row.g-5 .col {
+    padding: 0 30px;
+}
