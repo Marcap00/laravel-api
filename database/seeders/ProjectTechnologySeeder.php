@@ -41,6 +41,8 @@ class ProjectTechnologySeeder extends Seeder
                 $project->technologies()->sync([6]);
             } elseif (Str::contains($formattedName, ['vite', 'vue'])) {
                 $project->technologies()->sync([5]);
+            } elseif (Str::contains($formattedName, 'html') && Str::contains($formattedName, 'css')) {
+                $project->technologies()->sync([1, 2]);
             } elseif (Str::contains($formattedName, 'html')) {
                 $project->technologies()->sync([1]);
             } elseif (Str::contains($formattedName, 'css')) {
