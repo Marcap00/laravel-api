@@ -3,6 +3,7 @@
 @section('content')
 <main>
     <div class="container">
+        @include('includes.session_message')
         @if (Route::currentRouteName() == 'admin.technologies.index')
         <a class="btn btn-success my-3 me-2" href="{{ route('admin.technologies.create') }}">
             Add new technology <i class="fas fa-plus"></i>
@@ -44,7 +45,7 @@
                                 <i class="fas fa-pencil"></i>
                             </a>
                             @elseif (Route::currentRouteName() == 'admin.technologies.bin')
-                            <form class="patch-form" action="{{ route('admin.technologies.restore', $t->id) }}" method="POST">
+                            <form class="patch-form" action="{{ route('admin.technologies.restore', ['id' => $t->id, 'name' => $t->name]) }}" method="POST">
                                 @csrf
                                 @method('PATCH')
                                 <button class="btn btn-warning me-2" type="submit"><i class="fas fa-rotate"></i></button>
@@ -76,7 +77,7 @@
                                             <button class="btn btn-danger" type="submit">Delete <i class="fas fa-trash fa-lg"></i></button>
                                         </form>
                                         @elseif (Route::currentRouteName() == 'admin.technologies.bin')
-                                        <form class="perma-del-form" action="{{ route('admin.technologies.permanent-destroy', $t->id) }}" method="POST">
+                                        <form class="perma-del-form" action="{{ route('admin.technologies.permanent-destroy', ['id' => $t->id, 'name' => $t->name]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-danger" type="submit">Delete <i class="fas fa-trash fa-lg"></i></button>

@@ -42,6 +42,6 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/technologies/bin', [AdminTechnologyController::class, 'bin'])->name('technologies.bin');
     Route::resource('/technologies', AdminTechnologyController::class);
-    Route::delete('/technologies/{id}/permanent-delete', [AdminTechnologyController::class, 'permanentDestroy'])->name('technologies.permanent-destroy');
-    Route::patch('/technologies/{id}/restore', [AdminTechnologyController::class, 'restore'])->name('technologies.restore');
+    Route::delete('/technologies/{id}/{name}/permanent-delete', [AdminTechnologyController::class, 'permanentDestroy'])->name('technologies.permanent-destroy');
+    Route::patch('/technologies/{id}/{name}/restore', [AdminTechnologyController::class, 'restore'])->name('technologies.restore');
 });

@@ -47,7 +47,9 @@ class TechnologyController extends Controller
 
         $technology = Technology::create($data);
 
-        return redirect()->route('admin.technologies.show', compact('technology'));
+        return redirect()->route('admin.technologies.show', compact('technology'))
+            ->with("message", "Project $technology->name has been created successfully!")
+            ->with("alert-class", "success");
     }
 
     /**
@@ -77,7 +79,9 @@ class TechnologyController extends Controller
 
         $technology->update($data);
 
-        return redirect()->route('admin.technologies.show', $technology);
+        return redirect()->route('admin.technologies.show', $technology)
+            ->with("message", "Project $technology->name has been updated successfully!")
+            ->with("alert-class", "success");
     }
 
     /**
@@ -87,25 +91,31 @@ class TechnologyController extends Controller
     {
         $technology->delete();
 
-        return redirect()->route('admin.technologies.index');
+        return redirect()->route('admin.technologies.index')
+            ->with("message", "Project $technology->name has been deleted successfully!")
+            ->with("alert-class", "success");
     }
 
     /**
      * Restore the specified resource from storage.
      */
-    public function restore(string $id)
+    public function restore(string $id, string $name)
     {
         $technology = Technology::onlyTrashed()->findorFail($id);
         $technology->restore();
-        return redirect()->route('admin.technologies.bin');
+        return redirect()->route('admin.technologies.bin')
+            ->with("message", "Technology $name has been restored successfully!")
+            ->with("alert-class", "success");
     }
 
-    public function permanentDestroy(string $id)
+    public function permanentDestroy(string $id, string $name)
     {
         $technology = Technology::onlyTrashed()->findorFail($id);
         $technology->forceDelete();
 
-        return redirect()->route('admin.technologies.bin');
+        return redirect()->route('admin.technologies.bin')
+            ->with("message", "Technology $name has been permanent deleted successfully!")
+            ->with("alert-class", "success");
     }
 
     public function bin()
