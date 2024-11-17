@@ -6,7 +6,7 @@
 <main>
     <div class="container">
         <form action="{{ (Route::currentRouteName() == 'admin.projects.edit') ? route('admin.projects.update', $project->id ) : route('admin.projects.store') }}" method="POST" enctype="multipart/form-data" class="text-center card">
-            @if (Route::currentRouteName() == 'admin.projects.edit')
+            @if (Route::is('admin.projects.edit'))
             @method('PUT')
             @endif
             @csrf
@@ -79,10 +79,10 @@
             </div>
             <div class="flex-center my-3">
                 <button type="submit" class="btn btn-warning me-2">
-                    @if (Route::currentRouteName() == 'admin.projects.edit')
+                    @if (Route::is('admin.projects.edit'))
                     <span>Edit</span>
                     <i class="fas fa-pencil ms-2"></i>
-                    @elseif (Route::currentRouteName() == 'admin.projects.create')
+                    @elseif (Route::is('admin.projects.create'))
                     <span>Create new project</span>
                     <i class="fas fa-plus ms-2"></i>
                     @endif

@@ -7,12 +7,12 @@
     <div class="container">
         <form
             action="{{
-            (Route::currentRouteName() == 'admin.technologies.edit') ?
+            (Route::is('admin.technologies.edit')) ?
             route('admin.technologies.update', $technology->id ) :
             route('admin.technologies.store')
             }}"
             method="POST" class="text-center card">
-            @if (Route::currentRouteName() == 'admin.technologies.edit')
+            @if (Route::is('admin.technologies.edit'))
                 @method('PUT')
             @endif
             @csrf
@@ -33,10 +33,10 @@
                 </div>
                 <div class="flex-center my-3">
                     <button type="submit" class="btn btn-warning me-2">
-                        @if (Route::currentRouteName() == 'admin.technologies.edit')
+                        @if (Route::is('admin.technologies.edit'))
                         <span>Edit</span>
                         <i class="fas fa-pencil ms-2"></i>
-                        @elseif (Route::currentRouteName() == 'admin.technologies.create')
+                        @elseif (Route::is('admin.technologies.create'))
                         <span>Create new technology</span>
                         <i class="fas fa-plus ms-2"></i>
                         @endif

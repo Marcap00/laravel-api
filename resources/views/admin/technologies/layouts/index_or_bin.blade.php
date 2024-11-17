@@ -4,14 +4,14 @@
 <main>
     <div class="container">
         @include('includes.session_message')
-        @if (Route::currentRouteName() == 'admin.technologies.index')
+        @if (Route::is('admin.technologies.index'))
         <a class="btn btn-success my-3 me-2" href="{{ route('admin.technologies.create') }}">
             Add new technology <i class="fas fa-plus"></i>
         </a>
         <a href="{{ route('admin.technologies.bin') }}" class="btn btn-warning my-3">
             Go to the bin <i class="fas fa-trash"></i>
         </a>
-        @elseif (Route::currentRouteName() == 'admin.technologies.bin')
+        @elseif (Route::is('admin.technologies.bin'))
         <a href="{{ route('admin.technologies.index') }}" class="btn btn-secondary my-3">
             Go Back<i class="fas fa-arrow-left ms-2"></i>
         </a>
@@ -37,14 +37,14 @@
                     </td>
                     <td>
                         <div class="flex-end">
-                            @if (Route::currentRouteName() == 'admin.technologies.index')
+                            @if (Route::is('admin.technologies.index'))
                             <a class="btn btn-success me-2" href="{{ route('admin.technologies.show', $t) }}">
                                 <i class="fas fa-eye"></i>
                             </a>
                             <a class="btn btn-secondary me-2" href="{{ route('admin.technologies.edit', $t) }}">
                                 <i class="fas fa-pencil"></i>
                             </a>
-                            @elseif (Route::currentRouteName() == 'admin.technologies.bin')
+                            @elseif (Route::is('admin.technologies.bin'))
                             <form class="patch-form" action="{{ route('admin.technologies.restore', ['id' => $t->id, 'name' => $t->name]) }}" method="POST">
                                 @csrf
                                 @method('PATCH')
@@ -60,23 +60,23 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ (Route::currentRouteName() == 'admin.technologies.bin') ? 'Permanent deleting' : 'Deleting'}} {{ $t->name }}</h1>
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ (Route::is('admin.technologies.bin')) ? 'Permanent deleting' : 'Deleting'}} {{ $t->name }}</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Are you sure you want to <span class="text-danger fw-semibold">{{ (Route::currentRouteName() == 'admin.technologies.bin') ? 'permanent' : ''}}</span> delete <span class="fw-semibold">{{ $t->name }}</span>?</p>
+                                        <p>Are you sure you want to <span class="text-danger fw-semibold">{{ (Route::is('admin.technologies.bin')) ? 'permanent' : ''}}</span> delete <span class="fw-semibold">{{ $t->name }}</span>?</p>
                                     </div>
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                                        @if (Route::currentRouteName() == 'admin.technologies.index')
+                                        @if (Route::is('admin.technologies.index'))
                                         <form class="del-form" action="{{ route('admin.technologies.destroy', $t) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-danger" type="submit">Delete <i class="fas fa-trash fa-lg"></i></button>
                                         </form>
-                                        @elseif (Route::currentRouteName() == 'admin.technologies.bin')
+                                        @elseif (Route::is('admin.technologies.bin'))
                                         <form class="perma-del-form" action="{{ route('admin.technologies.permanent-destroy', ['id' => $t->id, 'name' => $t->name]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
