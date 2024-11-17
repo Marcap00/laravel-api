@@ -3,6 +3,7 @@
 @section('content')
 <main>
     <div class="container">
+        @include('includes.session_message')
         @if (Route::currentRouteName() == 'admin.projects.index')
         <a class="btn btn-success my-3 me-2" href="{{ route('admin.projects.create') }}">
             Add new project <i class="fas fa-plus"></i>
@@ -59,7 +60,7 @@
                             </a>
 
                             @elseif (Route::currentRouteName() == 'admin.projects.bin')
-                            <form class="patch-form" action="{{ route('admin.projects.restore', $project->id) }}" method="POST">
+                            <form class="patch-form" action="{{ route('admin.projects.restore', ['id' => $project->id, 'title' => $project->title]) }}" method="POST">
                                 @csrf
                                 @method('PATCH')
                                 <button class="btn btn-warning me-2" type="submit"><i class="fas fa-rotate"></i></button>
@@ -93,13 +94,12 @@
                                             <button class="btn btn-danger" type="submit">Delete <i class="fas fa-trash fa-lg"></i></button>
                                         </form>
                                         @elseif (Route::currentRouteName() == 'admin.projects.bin')
-                                        <form class="perma-del-form" action="{{ route('admin.projects.permanent-destroy', $project->id) }}" method="POST">
+                                        <form class="perma-del-form" action="{{ route('admin.projects.permanent-destroy', ['id' => $project->id, 'title' => $project->title]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-danger" type="submit">Delete <i class="fas fa-trash fa-lg"></i></button>
                                         </form>
                                         @endif
-
                                     </div>
                                 </div>
                             </div>

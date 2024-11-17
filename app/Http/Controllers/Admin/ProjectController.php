@@ -61,7 +61,9 @@ class ProjectController extends Controller
             $project->technologies()->detach();
         }
 
-        return redirect()->route('admin.projects.show', $project);
+        return redirect()->route('admin.projects.show', $project)
+            ->with("message", "Project $project->title has been created successfully!")
+            ->with("alert-class", "success");
     }
 
     /**
@@ -105,7 +107,9 @@ class ProjectController extends Controller
             $project->technologies()->detach();
         }
 
-        return redirect()->route('admin.projects.show', $project);
+        return redirect()->route('admin.projects.show', $project)
+            ->with("message", "Project $project->title has been updated successfully!")
+            ->with("alert-class", "success");
     }
 
     /**
@@ -115,25 +119,31 @@ class ProjectController extends Controller
     {
         $project->delete();
 
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')
+            ->with("message", "Project $project->title has been deleted successfully!")
+            ->with("alert-class", "success");
     }
 
     /**
      * Restore the specified resource from storage.
      */
-    public function restore(string $id)
+    public function restore(string $id, string $title)
     {
         $restoredProject = Project::onlyTrashed()->findorFail($id);
         $restoredProject->restore();
-        return redirect()->route('admin.projects.bin');
+        return redirect()->route('admin.projects.bin')
+            ->with("message", "Project $title has been permanent deleted successfully!")
+            ->with("alert-class", "success");
     }
 
-    public function permanentDestroy(string $id)
+    public function permanentDestroy(string $id, string $title)
     {
         $permanentDestroyedProject = Project::onlyTrashed()->findorFail($id);
         $permanentDestroyedProject->forceDelete();
 
-        return redirect()->route('admin.projects.bin');
+        return redirect()->route('admin.projects.bin')
+            ->with("message", "Project $title has been permanent deleted successfully!")
+            ->with("alert-class", "success");
     }
 
     public function bin()

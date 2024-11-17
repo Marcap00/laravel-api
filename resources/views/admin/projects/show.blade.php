@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                @include('includes.session_message')
                 <div class="card text-center p-3">
                     <div class="card-img-top">
                         @if ($project->image)
