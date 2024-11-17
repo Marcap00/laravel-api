@@ -68,12 +68,12 @@
 
                             @endif
 
-                            <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $project->id}}">
+                            <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $project->id }}">
                                 <i class="fas fa-trash fa-lg"></i>
                             </button>
                         </div>
                         <!-- Modal -->
-                        <div class="modal fade del-modal" id="staticBackdrop-{{ $project->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal fade del-modal" id="staticBackdrop-{{ $project->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
