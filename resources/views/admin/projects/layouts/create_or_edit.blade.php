@@ -5,7 +5,7 @@
 @section('content')
 <main>
     <div class="container">
-        <form action="{{ (Route::currentRouteName() == 'admin.projects.edit') ? route('admin.projects.update', $project->id ) : route('admin.projects.store') }}" method="POST" enctype="multipart/form-data" class="text-center card">
+        <form action="{{ (Route::is('admin.projects.edit')) ? route('admin.projects.update', $project->id ) : route('admin.projects.store') }}" method="POST" enctype="multipart/form-data" class="text-center card">
             @if (Route::is('admin.projects.edit'))
             @method('PUT')
             @endif
