@@ -50,12 +50,12 @@
                                 <button class="btn btn-warning me-2" type="submit"><i class="fas fa-rotate"></i></button>
                             </form>
                             @endif
-                            <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $t->id }}">
                                 <i class="fas fa-trash fa-lg"></i>
                             </button>
                         </div>
                         <!-- Modal -->
-                        <div class="modal fade del-modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal fade del-modal" id="staticBackdrop-{{ $t->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
